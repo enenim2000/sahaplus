@@ -2,6 +2,7 @@ package com.elara.sahaplus.MISReportSystem.service;
 
 import com.elara.sahaplus.MISReportSystem.dto.backbone.*;
 import com.elara.sahaplus.MISReportSystem.dto.request.CustomerSizeReportRequest;
+import com.elara.sahaplus.MISReportSystem.dto.response.GetAllMfbsResponse;
 import com.elara.sahaplus.customer.dto.response.CustomerSizeReportResponse;
 import com.elara.sahaplus.util.HttpClient;
 import lombok.extern.slf4j.Slf4j;
@@ -31,6 +32,17 @@ public class MISReportingSystemService {
         var response = new CustomerSizeReportResponse();
         BeanUtils.copyProperties(response.getData(), apiResponse);
         log.info("GET_CUSTOMER_SIZE_RESPONSE: {}", response);
+
+        return response;
+    }
+
+    public GetAllMfbsResponse getAllMfbs () throws InvocationTargetException, IllegalAccessException {
+
+        var apiResponse = httpClient.callApi(null, GetAllMfbsResponseDto.class, HttpMethod.GET, "/MISReportSystem/GetAllMfbs");
+
+        var response = new GetAllMfbsResponse();
+        BeanUtils.copyProperties(response.getData(), apiResponse);
+        log.info("GET_ALL_MFBS_RESPONSE: {}", response);
 
         return response;
     }

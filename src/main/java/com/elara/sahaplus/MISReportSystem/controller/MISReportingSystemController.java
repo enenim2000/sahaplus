@@ -1,6 +1,7 @@
 package com.elara.sahaplus.MISReportSystem.controller;
 
 import com.elara.sahaplus.MISReportSystem.dto.request.CustomerSizeReportRequest;
+import com.elara.sahaplus.MISReportSystem.dto.response.GetAllMfbsResponse;
 import com.elara.sahaplus.MISReportSystem.service.MISReportingSystemService;
 import com.elara.sahaplus.customer.dto.response.CustomerSizeReportResponse;
 import com.elara.sahaplus.util.BaseResponse;
@@ -34,6 +35,16 @@ public class MISReportingSystemController {
     @GetMapping("/getCustomerSizeReport")
     public BaseResponse getCustomerSizeReport (@Valid @RequestBody CustomerSizeReportRequest request) throws InvocationTargetException, IllegalAccessException {
         return misReportingSystemService.getCustomerSizeReport(request);
+    }
+
+    @Operation(summary = "Get All MFBS")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Get All MFBS",
+                    content = {@Content(mediaType = "application/json",
+                            schema = @Schema(implementation = GetAllMfbsResponse.class))})})
+    @GetMapping("/getAllMfbs")
+    public GetAllMfbsResponse getCustomerSizeReport () throws InvocationTargetException, IllegalAccessException {
+        return misReportingSystemService.getAllMfbs();
     }
 
 }
