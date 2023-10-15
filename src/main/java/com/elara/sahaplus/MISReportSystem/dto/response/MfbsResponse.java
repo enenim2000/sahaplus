@@ -2,16 +2,17 @@ package com.elara.sahaplus.MISReportSystem.dto.response;
 
 import com.elara.sahaplus.MISReportSystem.Mfbs;
 import com.elara.sahaplus.util.BaseResponse;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 
 @Getter
 @Setter
 @Builder
 @AllArgsConstructor
-public class GetAllMfbsResponse extends BaseResponse {
+public class MfbsResponse extends BaseResponse {
     private Data data;
 
-    public GetAllMfbsResponse() {
+    public MfbsResponse() {
         super();
     }
 
@@ -21,7 +22,8 @@ public class GetAllMfbsResponse extends BaseResponse {
     @NoArgsConstructor
     @AllArgsConstructor
     public static class Data {
-        private int Count;
+        @JsonProperty("Count")
+        private int count;
         private Mfbs mfbs;
     }
 

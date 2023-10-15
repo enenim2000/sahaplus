@@ -1,7 +1,7 @@
 package com.elara.sahaplus.MISReportSystem.controller;
 
 import com.elara.sahaplus.MISReportSystem.dto.request.CustomerSizeReportRequest;
-import com.elara.sahaplus.MISReportSystem.dto.response.GetAllMfbsResponse;
+import com.elara.sahaplus.MISReportSystem.dto.response.MfbsResponse;
 import com.elara.sahaplus.MISReportSystem.service.MISReportingSystemService;
 import com.elara.sahaplus.customer.dto.response.CustomerSizeReportResponse;
 import com.elara.sahaplus.util.BaseResponse;
@@ -23,7 +23,8 @@ public class MISReportingSystemController {
 
     private final MISReportingSystemService misReportingSystemService;
 
-    public MISReportingSystemController(MISReportingSystemService misReportingSystemService) {
+    public MISReportingSystemController(MISReportingSystemService misReportingSystemService)
+    {
         this.misReportingSystemService = misReportingSystemService;
     }
 
@@ -33,7 +34,11 @@ public class MISReportingSystemController {
                     content = {@Content(mediaType = "application/json",
                             schema = @Schema(implementation = CustomerSizeReportResponse.class))})})
     @GetMapping("/getCustomerSizeReport")
-    public BaseResponse getCustomerSizeReport (@Valid @RequestBody CustomerSizeReportRequest request) throws InvocationTargetException, IllegalAccessException {
+    public BaseResponse getCustomerSizeReport (
+            @Valid
+            @RequestBody CustomerSizeReportRequest request)
+            throws InvocationTargetException, IllegalAccessException
+    {
         return misReportingSystemService.getCustomerSizeReport(request);
     }
 
@@ -41,10 +46,23 @@ public class MISReportingSystemController {
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Get All MFBS",
                     content = {@Content(mediaType = "application/json",
-                            schema = @Schema(implementation = GetAllMfbsResponse.class))})})
+                            schema = @Schema(implementation = MfbsResponse.class))})})
     @GetMapping("/getAllMfbs")
-    public GetAllMfbsResponse getCustomerSizeReport () throws InvocationTargetException, IllegalAccessException {
+    public MfbsResponse getCustomerSizeReport ()
+            throws InvocationTargetException, IllegalAccessException
+    {
         return misReportingSystemService.getAllMfbs();
     }
 
+    @Operation(summary = "Get All Mfbs Name And Identity Code")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Get All Mfbs Name And Identity Code",
+                    content = {@Content(mediaType = "application/json",
+                            schema = @Schema(implementation = MfbsResponse.class))})})
+    @GetMapping("/getAllMfbsNameAndIdentityCode")
+    public MfbsResponse getAllMfbsNameAndIdentityCode ()
+            throws InvocationTargetException, IllegalAccessException
+    {
+        return misReportingSystemService.getAllMfbsNameAndIdentityCode();
+    }
 }
