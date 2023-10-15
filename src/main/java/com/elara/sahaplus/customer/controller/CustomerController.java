@@ -1,7 +1,9 @@
 package com.elara.sahaplus.customer.controller;
 
 import com.elara.sahaplus.customer.dto.request.CreateCustomerRequest;
+import com.elara.sahaplus.customer.dto.request.UpdateCustomerRequest;
 import com.elara.sahaplus.customer.dto.response.CreateCustomerResponse;
+import com.elara.sahaplus.customer.dto.response.UpdateCustomerResponse;
 import com.elara.sahaplus.customer.service.CustomerService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -37,5 +39,15 @@ public class CustomerController {
     @PostMapping("/CreateCustomer")
     public CreateCustomerResponse createCustomerAndAccount(@Valid @RequestBody CreateCustomerRequest request) throws InvocationTargetException, IllegalAccessException {
         return customerService.createCustomer(request);
+    }
+
+    @Operation(summary = "Update Customer")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Update Customer Details",
+                    content = {@Content(mediaType = "application/json",
+                            schema = @Schema(implementation = UpdateCustomerResponse.class))})})
+    @PostMapping("/UpdateCustomer")
+    public UpdateCustomerResponse createCustomerAndAccount(@Valid @RequestBody UpdateCustomerRequest request) throws InvocationTargetException, IllegalAccessException {
+        return customerService.updateCustomer(request);
     }
 }

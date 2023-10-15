@@ -2,8 +2,12 @@ package com.elara.sahaplus.customer.service;
 
 import com.elara.sahaplus.customer.dto.backbone.CreateCustomerRequestDto;
 import com.elara.sahaplus.customer.dto.backbone.CreateCustomerResponseDto;
+import com.elara.sahaplus.customer.dto.backbone.UpdateCustomerRequestDto;
+import com.elara.sahaplus.customer.dto.backbone.UpdateCustomerResponseDto;
 import com.elara.sahaplus.customer.dto.request.CreateCustomerRequest;
+import com.elara.sahaplus.customer.dto.request.UpdateCustomerRequest;
 import com.elara.sahaplus.customer.dto.response.CreateCustomerResponse;
+import com.elara.sahaplus.customer.dto.response.UpdateCustomerResponse;
 import com.elara.sahaplus.util.HttpClient;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.beanutils.BeanUtils;
@@ -31,6 +35,20 @@ public class CustomerService {
         var response = new CreateCustomerResponse();
         BeanUtils.copyProperties(response.getData(), apiResponse);
         log.info("CREATE_CUSTOMER_RESPONSE: {}", response);
+
+        return response;
+    }
+
+    public UpdateCustomerResponse updateCustomer (UpdateCustomerRequest updateCustomerRequest) throws InvocationTargetException, IllegalAccessException {
+        var requestDto = new UpdateCustomerRequestDto();
+        BeanUtils.copyProperties(requestDto, updateCustomerRequest);
+        log.info("UPDATE_CUSTOMER_REQUEST: {}", requestDto);
+
+        var apiResponse = httpClient.callApi(requestDto, UpdateCustomerResponseDto.class, HttpMethod.POST, "/Customer/UpdateCustomer");
+
+        var response = new UpdateCustomerResponse();
+        BeanUtils.copyProperties(response.getData(), apiResponse);
+        log.info("UPDATE_CUSTOMER_RESPONSE: {}", response);
 
         return response;
     }
