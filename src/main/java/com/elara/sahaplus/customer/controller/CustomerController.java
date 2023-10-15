@@ -1,10 +1,12 @@
 package com.elara.sahaplus.customer.controller;
 
 import com.elara.sahaplus.customer.dto.request.CreateCustomerRequest;
+import com.elara.sahaplus.customer.dto.request.SaveCustomerPassportRequest;
 import com.elara.sahaplus.customer.dto.request.UpdateCustomerRequest;
 import com.elara.sahaplus.customer.dto.response.CreateCustomerResponse;
 import com.elara.sahaplus.customer.dto.response.UpdateCustomerResponse;
 import com.elara.sahaplus.customer.service.CustomerService;
+import com.elara.sahaplus.util.BaseResponse;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -36,8 +38,8 @@ public class CustomerController {
             @ApiResponse(responseCode = "200", description = "Create Customer",
                     content = {@Content(mediaType = "application/json",
                             schema = @Schema(implementation = CreateCustomerResponse.class))})})
-    @PostMapping("/CreateCustomer")
-    public CreateCustomerResponse createCustomerAndAccount(@Valid @RequestBody CreateCustomerRequest request) throws InvocationTargetException, IllegalAccessException {
+    @PostMapping("/createCustomer")
+    public CreateCustomerResponse createCustomer(@Valid @RequestBody CreateCustomerRequest request) throws InvocationTargetException, IllegalAccessException {
         return customerService.createCustomer(request);
     }
 
@@ -46,8 +48,18 @@ public class CustomerController {
             @ApiResponse(responseCode = "200", description = "Update Customer Details",
                     content = {@Content(mediaType = "application/json",
                             schema = @Schema(implementation = UpdateCustomerResponse.class))})})
-    @PostMapping("/UpdateCustomer")
-    public UpdateCustomerResponse createCustomerAndAccount(@Valid @RequestBody UpdateCustomerRequest request) throws InvocationTargetException, IllegalAccessException {
+    @PostMapping("/updateCustomer")
+    public UpdateCustomerResponse updateCustomerAccount(@Valid @RequestBody UpdateCustomerRequest request) throws InvocationTargetException, IllegalAccessException {
         return customerService.updateCustomer(request);
+    }
+
+    @Operation(summary = "Save Customer Passport")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Saves Customer Passport",
+                    content = {@Content(mediaType = "application/json",
+                            schema = @Schema(implementation = BaseResponse.class))})})
+    @PostMapping("/saveCustomerPassport")
+    public BaseResponse saveCustomerPassport (@Valid @RequestBody SaveCustomerPassportRequest request) throws InvocationTargetException, IllegalAccessException {
+        return customerService.saveCustomerPassport(request);
     }
 }

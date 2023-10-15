@@ -5,9 +5,11 @@ import com.elara.sahaplus.customer.dto.backbone.CreateCustomerResponseDto;
 import com.elara.sahaplus.customer.dto.backbone.UpdateCustomerRequestDto;
 import com.elara.sahaplus.customer.dto.backbone.UpdateCustomerResponseDto;
 import com.elara.sahaplus.customer.dto.request.CreateCustomerRequest;
+import com.elara.sahaplus.customer.dto.request.SaveCustomerPassportRequest;
 import com.elara.sahaplus.customer.dto.request.UpdateCustomerRequest;
 import com.elara.sahaplus.customer.dto.response.CreateCustomerResponse;
 import com.elara.sahaplus.customer.dto.response.UpdateCustomerResponse;
+import com.elara.sahaplus.util.BaseResponse;
 import com.elara.sahaplus.util.HttpClient;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.beanutils.BeanUtils;
@@ -51,6 +53,17 @@ public class CustomerService {
         log.info("UPDATE_CUSTOMER_RESPONSE: {}", response);
 
         return response;
+    }
+
+    public BaseResponse saveCustomerPassport (SaveCustomerPassportRequest saveCustomerPassportRequest) throws InvocationTargetException, IllegalAccessException {
+        var requestDto = new UpdateCustomerRequestDto();
+        BeanUtils.copyProperties(requestDto, saveCustomerPassportRequest);
+        log.info("SAVE_CUSTOMER_PASSPORT_REQUEST: {}", requestDto);
+
+        var apiResponse = httpClient.callApi(requestDto, null, HttpMethod.POST, "/Customer/SaveCustomerPassport");
+        log.info("UPDATE_CUSTOMER_RESPONSE: {}", apiResponse);
+
+        return new BaseResponse();
     }
 
 }
