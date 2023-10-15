@@ -1,9 +1,6 @@
 package com.elara.sahaplus.customer.service;
 
-import com.elara.sahaplus.customer.dto.backbone.CreateCustomerRequestDto;
-import com.elara.sahaplus.customer.dto.backbone.CreateCustomerResponseDto;
-import com.elara.sahaplus.customer.dto.backbone.UpdateCustomerRequestDto;
-import com.elara.sahaplus.customer.dto.backbone.UpdateCustomerResponseDto;
+import com.elara.sahaplus.customer.dto.backbone.*;
 import com.elara.sahaplus.customer.dto.request.CreateCustomerRequest;
 import com.elara.sahaplus.customer.dto.request.SaveCustomerPassportRequest;
 import com.elara.sahaplus.customer.dto.request.UpdateCustomerRequest;
@@ -65,5 +62,4 @@ public class CustomerService {
 
         return new BaseResponse();
     }
-
 }
