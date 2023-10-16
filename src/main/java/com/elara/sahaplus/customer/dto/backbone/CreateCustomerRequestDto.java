@@ -3,9 +3,16 @@ package com.elara.sahaplus.customer.dto.backbone;
 import com.elara.sahaplus.enums.CustomerType;
 import com.elara.sahaplus.enums.Gender;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.*;
+
 import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 
+@Getter
+@Setter
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class CreateCustomerRequestDto {
     @NotNull
     @JsonProperty("FirstName")
