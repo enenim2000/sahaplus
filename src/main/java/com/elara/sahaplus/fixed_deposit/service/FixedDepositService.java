@@ -1,13 +1,12 @@
 package com.elara.sahaplus.fixed_deposit.service;
 
-import com.elara.sahaplus.fixed_deposit.dto.backbone.CreateFixedDepositAccountRequest3Dto;
-import com.elara.sahaplus.fixed_deposit.dto.backbone.CreateFixedDepositAccountRequestDto;
-import com.elara.sahaplus.fixed_deposit.dto.backbone.CreateFixedDepositAccountResponseDto;
-import com.elara.sahaplus.fixed_deposit.dto.backbone.CreateFixedDepositAccountWithCustomerIdRequestDto;
+import com.elara.sahaplus.fixed_deposit.dto.backbone.*;
 import com.elara.sahaplus.fixed_deposit.dto.request.CreateFixedDepositAccountRequest;
 import com.elara.sahaplus.fixed_deposit.dto.request.CreateFixedDepositAccountRequest3;
 import com.elara.sahaplus.fixed_deposit.dto.request.CreateFixedDepositAccountWithCustomerIdRequest;
+import com.elara.sahaplus.fixed_deposit.dto.request.GetFixedDepositAccountRequest;
 import com.elara.sahaplus.fixed_deposit.dto.response.CreateFixedDepositAccountResponse;
+import com.elara.sahaplus.fixed_deposit.dto.response.GetFixedDepositAccountResponse;
 import com.elara.sahaplus.util.HttpClient;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.beanutils.BeanUtils;
@@ -94,6 +93,60 @@ public class FixedDepositService {
         var response = new CreateFixedDepositAccountResponse();
         BeanUtils.copyProperties(response.getData(), apiResponse);
         log.info("CREATE_FIXED_DEPOSIT_ACCOUNT_3_RESPONSE: {}", response);
+
+        return response;
+    }
+
+    public GetFixedDepositAccountResponse getFixedDepositAccountByAccountNumber (
+            GetFixedDepositAccountRequest getFixedDepositAccountRequest)
+            throws InvocationTargetException, IllegalAccessException
+    {
+        var requestDto = new GetFixedDepositAccountRequestDto();
+        BeanUtils.copyProperties(requestDto, getFixedDepositAccountRequest);
+        log.info("GET_FIXED_DEPOSIT_ACCOUNT_BY_ACCOUNT_NUMBER_REQUEST {}", requestDto);
+
+        var apiResponse = httpClient.callApi(requestDto, GetFixedDepositAccountResponseDto.class,
+                HttpMethod.GET, "/FixedDeposit/GetFixedDepositAccountByAccountNumber");
+
+        var response = new GetFixedDepositAccountResponse();
+        BeanUtils.copyProperties(response.getData(), apiResponse);
+        log.info("GET_FIXED_DEPOSIT_ACCOUNT_BY_ACCOUNT_NUMBER_RESPONSE: {}", response);
+
+        return response;
+    }
+
+    public GetFixedDepositAccountResponse getFixedDepositAccountByLiquidationAccount (
+            GetFixedDepositAccountRequest getFixedDepositAccountRequest)
+            throws InvocationTargetException, IllegalAccessException
+    {
+        var requestDto = new GetFixedDepositAccountRequestDto();
+        BeanUtils.copyProperties(requestDto, getFixedDepositAccountRequest);
+        log.info("GET_FIXED_DEPOSIT_ACCOUNT_BY_LIQUIDATION_ACCOUNT_REQUEST {}", requestDto);
+
+        var apiResponse = httpClient.callApi(requestDto, GetFixedDepositAccountResponseDto.class,
+                HttpMethod.GET, "/FixedDeposit/GetFixedDepositAccountByLiquidationAccount");
+
+        var response = new GetFixedDepositAccountResponse();
+        BeanUtils.copyProperties(response.getData(), apiResponse);
+        log.info("GET_FIXED_DEPOSIT_ACCOUNT_BY_LIQUIDATION_ACCOUNT_RESPONSE: {}", response);
+
+        return response;
+    }
+
+    public GetFixedDepositAccountResponse getFixedDepositAccountByPhoneNumber (
+            GetFixedDepositAccountRequest getFixedDepositAccountRequest)
+            throws InvocationTargetException, IllegalAccessException
+    {
+        var requestDto = new GetFixedDepositAccountRequestDto();
+        BeanUtils.copyProperties(requestDto, getFixedDepositAccountRequest);
+        log.info("GET_FIXED_DEPOSIT_ACCOUNT_BY_PHONE_NUMBER_REQUEST {}", requestDto);
+
+        var apiResponse = httpClient.callApi(requestDto, GetFixedDepositAccountResponseDto.class,
+                HttpMethod.GET, "/FixedDeposit/GetFixedDepositAccountByPhoneNumber");
+
+        var response = new GetFixedDepositAccountResponse();
+        BeanUtils.copyProperties(response.getData(), apiResponse);
+        log.info("GET_FIXED_DEPOSIT_ACCOUNT_BY_PHONE_NUMBER_RESPONSE: {}", response);
 
         return response;
     }

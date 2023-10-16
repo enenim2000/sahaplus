@@ -3,7 +3,9 @@ package com.elara.sahaplus.fixed_deposit.controller;
 import com.elara.sahaplus.fixed_deposit.dto.request.CreateFixedDepositAccountRequest;
 import com.elara.sahaplus.fixed_deposit.dto.request.CreateFixedDepositAccountRequest3;
 import com.elara.sahaplus.fixed_deposit.dto.request.CreateFixedDepositAccountWithCustomerIdRequest;
+import com.elara.sahaplus.fixed_deposit.dto.request.GetFixedDepositAccountRequest;
 import com.elara.sahaplus.fixed_deposit.dto.response.CreateFixedDepositAccountResponse;
+import com.elara.sahaplus.fixed_deposit.dto.response.GetFixedDepositAccountResponse;
 import com.elara.sahaplus.fixed_deposit.service.FixedDepositService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -11,10 +13,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.lang.reflect.InvocationTargetException;
@@ -93,5 +92,56 @@ public class FixedDepositController {
             throws InvocationTargetException, IllegalAccessException
     {
         return fixedDepositService.createFixedDepositAccount3(request);
+    }
+
+    @Operation(summary = "Get Fixed Deposit Account")
+    @ApiResponses(value = {
+            @ApiResponse(
+                    responseCode = "200",
+                    description = "Get Fixed Deposit Account By Account Number",
+                    content = {@Content(mediaType = "application/json",
+                            schema = @Schema(implementation = GetFixedDepositAccountResponse.class))})})
+    @GetMapping("/getFixedDepositAccountByAccountNumber")
+    public GetFixedDepositAccountResponse getFixedDepositAccountByAccountNumber (
+            @Valid
+            @RequestBody GetFixedDepositAccountRequest request
+    )
+            throws InvocationTargetException, IllegalAccessException
+    {
+        return fixedDepositService.getFixedDepositAccountByAccountNumber(request);
+    }
+
+    @Operation(summary = "Get Fixed Deposit Account")
+    @ApiResponses(value = {
+            @ApiResponse(
+                    responseCode = "200",
+                    description = "Get Fixed Deposit Account By Liquidation Account",
+                    content = {@Content(mediaType = "application/json",
+                            schema = @Schema(implementation = GetFixedDepositAccountResponse.class))})})
+    @GetMapping("/getFixedDepositAccountByLiquidationAccount")
+    public GetFixedDepositAccountResponse getFixedDepositAccountByLiquidationAccount (
+            @Valid
+            @RequestBody GetFixedDepositAccountRequest request
+    )
+            throws InvocationTargetException, IllegalAccessException
+    {
+        return fixedDepositService.getFixedDepositAccountByLiquidationAccount(request);
+    }
+
+    @Operation(summary = "Get Fixed Deposit Account")
+    @ApiResponses(value = {
+            @ApiResponse(
+                    responseCode = "200",
+                    description = "Get Fixed Deposit Account By Phone Number",
+                    content = {@Content(mediaType = "application/json",
+                            schema = @Schema(implementation = GetFixedDepositAccountResponse.class))})})
+    @GetMapping("/getFixedDepositAccountByPhoneNumber")
+    public GetFixedDepositAccountResponse getFixedDepositAccountByPhoneNumber (
+            @Valid
+            @RequestBody GetFixedDepositAccountRequest request
+    )
+            throws InvocationTargetException, IllegalAccessException
+    {
+        return fixedDepositService.getFixedDepositAccountByPhoneNumber(request);
     }
 }
