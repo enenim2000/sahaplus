@@ -28,7 +28,7 @@ public class AccountService {
     ..Set other parameters..
     ........................
      */
-    CreateCustomerAndAccountResponseDto apiResponse = httpClient.callApi(request, CreateCustomerAndAccountResponseDto.class, HttpMethod.POST, "/Account/CreateCustomerAndAccount");
+    CreateCustomerAndAccountResponseDto apiResponse = httpClient.callApi(dto, CreateCustomerAndAccountResponseDto.class, HttpMethod.POST, "/Account/CreateCustomerAndAccount");
 
     CreateCustomerAndAccountResponse response = new CreateCustomerAndAccountResponse();
     response.getData().setTransactionTrackingRef(apiResponse.getTransactionTrackingRef());
