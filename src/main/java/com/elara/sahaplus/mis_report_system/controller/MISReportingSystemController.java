@@ -30,13 +30,16 @@ public class MISReportingSystemController {
 
     @Operation(summary = "Get Customer Size Report")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Gets Customer Size Report",
+            @ApiResponse(
+                    responseCode = "200",
+                    description = "Gets Customer Size Report",
                     content = {@Content(mediaType = "application/json",
                             schema = @Schema(implementation = CustomerSizeReportResponse.class))})})
     @GetMapping("/getCustomerSizeReport")
     public BaseResponse getCustomerSizeReport (
             @Valid
-            @RequestBody CustomerSizeReportRequest request)
+            @RequestBody CustomerSizeReportRequest request
+    )
             throws InvocationTargetException, IllegalAccessException
     {
         return misReportingSystemService.getCustomerSizeReport(request);
@@ -44,7 +47,9 @@ public class MISReportingSystemController {
 
     @Operation(summary = "Get All MFBS")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Get All MFBS",
+            @ApiResponse(
+                    responseCode = "200",
+                    description = "Get All MFBS",
                     content = {@Content(mediaType = "application/json",
                             schema = @Schema(implementation = MfbsResponse.class))})})
     @GetMapping("/getAllMfbs")
@@ -56,7 +61,9 @@ public class MISReportingSystemController {
 
     @Operation(summary = "Get All Mfbs Name And Identity Code")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Get All Mfbs Name And Identity Code",
+            @ApiResponse(
+                    responseCode = "200",
+                    description = "Get All Mfbs Name And Identity Code",
                     content = {@Content(mediaType = "application/json",
                             schema = @Schema(implementation = MfbsResponse.class))})})
     @GetMapping("/getAllMfbsNameAndIdentityCode")

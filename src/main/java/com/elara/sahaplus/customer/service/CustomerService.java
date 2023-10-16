@@ -24,12 +24,16 @@ public class CustomerService {
         this.httpClient = httpClient;
     }
 
-    public CreateCustomerResponse createCustomer(CreateCustomerRequest createCustomerRequest) throws InvocationTargetException, IllegalAccessException {
+    public CreateCustomerResponse createCustomer(
+            CreateCustomerRequest createCustomerRequest
+    ) throws InvocationTargetException, IllegalAccessException
+    {
         var requestDto = new CreateCustomerRequestDto();
         BeanUtils.copyProperties(requestDto, createCustomerRequest);
         log.info("CREATE_CUSTOMER_REQUEST: {}", requestDto);
 
-        var apiResponse = httpClient.callApi(requestDto, CreateCustomerResponseDto.class, HttpMethod.POST, "/Customer/CreateCustomer");
+        var apiResponse = httpClient.callApi(requestDto, CreateCustomerResponseDto.class, HttpMethod.POST,
+                "/Customer/CreateCustomer");
 
         var response = new CreateCustomerResponse();
         BeanUtils.copyProperties(response.getData(), apiResponse);
@@ -38,12 +42,16 @@ public class CustomerService {
         return response;
     }
 
-    public UpdateCustomerResponse updateCustomer (UpdateCustomerRequest updateCustomerRequest) throws InvocationTargetException, IllegalAccessException {
+    public UpdateCustomerResponse updateCustomer (
+            UpdateCustomerRequest updateCustomerRequest
+    ) throws InvocationTargetException, IllegalAccessException
+    {
         var requestDto = new UpdateCustomerRequestDto();
         BeanUtils.copyProperties(requestDto, updateCustomerRequest);
         log.info("UPDATE_CUSTOMER_REQUEST: {}", requestDto);
 
-        var apiResponse = httpClient.callApi(requestDto, UpdateCustomerResponseDto.class, HttpMethod.POST, "/Customer/UpdateCustomer");
+        var apiResponse = httpClient.callApi(requestDto, UpdateCustomerResponseDto.class, HttpMethod.POST,
+                "/Customer/UpdateCustomer");
 
         var response = new UpdateCustomerResponse();
         BeanUtils.copyProperties(response.getData(), apiResponse);
@@ -52,12 +60,16 @@ public class CustomerService {
         return response;
     }
 
-    public BaseResponse saveCustomerPassport (SaveCustomerPassportRequest saveCustomerPassportRequest) throws InvocationTargetException, IllegalAccessException {
+    public BaseResponse saveCustomerPassport (
+            SaveCustomerPassportRequest saveCustomerPassportRequest
+    ) throws InvocationTargetException, IllegalAccessException
+    {
         var requestDto = new UpdateCustomerRequestDto();
         BeanUtils.copyProperties(requestDto, saveCustomerPassportRequest);
         log.info("SAVE_CUSTOMER_PASSPORT_REQUEST: {}", requestDto);
 
-        var apiResponse = httpClient.callApi(requestDto, null, HttpMethod.POST, "/Customer/SaveCustomerPassport");
+        var apiResponse = httpClient.callApi(requestDto, null, HttpMethod.POST,
+                "/Customer/SaveCustomerPassport");
         log.info("UPDATE_CUSTOMER_RESPONSE: {}", apiResponse);
 
         return new BaseResponse();

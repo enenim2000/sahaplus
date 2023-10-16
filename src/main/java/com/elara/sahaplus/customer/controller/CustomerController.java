@@ -35,31 +35,49 @@ public class CustomerController {
 
     @Operation(summary = "Create Customer")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Create Customer",
+            @ApiResponse(
+                    responseCode = "200",
+                    description = "Create Customer",
                     content = {@Content(mediaType = "application/json",
                             schema = @Schema(implementation = CreateCustomerResponse.class))})})
     @PostMapping("/createCustomer")
-    public CreateCustomerResponse createCustomer(@Valid @RequestBody CreateCustomerRequest request) throws InvocationTargetException, IllegalAccessException {
+    public CreateCustomerResponse createCustomer(
+            @Valid
+            @RequestBody CreateCustomerRequest request)
+            throws InvocationTargetException, IllegalAccessException
+    {
         return customerService.createCustomer(request);
     }
 
     @Operation(summary = "Update Customer")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Update Customer Details",
+            @ApiResponse(
+                    responseCode = "200",
+                    description = "Update Customer Details",
                     content = {@Content(mediaType = "application/json",
                             schema = @Schema(implementation = UpdateCustomerResponse.class))})})
     @PostMapping("/updateCustomer")
-    public UpdateCustomerResponse updateCustomerAccount(@Valid @RequestBody UpdateCustomerRequest request) throws InvocationTargetException, IllegalAccessException {
+    public UpdateCustomerResponse updateCustomerAccount(
+            @Valid
+            @RequestBody UpdateCustomerRequest request)
+            throws InvocationTargetException, IllegalAccessException
+    {
         return customerService.updateCustomer(request);
     }
 
     @Operation(summary = "Save Customer Passport")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Saves Customer Passport",
+            @ApiResponse(
+                    responseCode = "200",
+                    description = "Saves Customer Passport",
                     content = {@Content(mediaType = "application/json",
                             schema = @Schema(implementation = BaseResponse.class))})})
     @PostMapping("/saveCustomerPassport")
-    public BaseResponse saveCustomerPassport (@Valid @RequestBody SaveCustomerPassportRequest request) throws InvocationTargetException, IllegalAccessException {
+    public BaseResponse saveCustomerPassport (
+            @Valid
+            @RequestBody SaveCustomerPassportRequest request)
+            throws InvocationTargetException, IllegalAccessException
+    {
         return customerService.saveCustomerPassport(request);
     }
 }
