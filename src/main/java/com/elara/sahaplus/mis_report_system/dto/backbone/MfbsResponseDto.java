@@ -1,6 +1,6 @@
-package com.elara.sahaplus.MISReportSystem.dto.backbone;
+package com.elara.sahaplus.mis_report_system.dto.backbone;
 
-import com.elara.sahaplus.MISReportSystem.Mfbs;
+import com.elara.sahaplus.mis_report_system.Mfbs;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 

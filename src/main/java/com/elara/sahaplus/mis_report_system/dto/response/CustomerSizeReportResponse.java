@@ -1,4 +1,4 @@
-package com.elara.sahaplus.MISReportSystem.dto.response;
+package com.elara.sahaplus.mis_report_system.dto.response;
 
 import com.elara.sahaplus.util.BaseResponse;
 import lombok.*;

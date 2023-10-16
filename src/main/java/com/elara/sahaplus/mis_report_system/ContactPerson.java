@@ -1,4 +1,4 @@
-package com.elara.sahaplus.MISReportSystem;
+package com.elara.sahaplus.mis_report_system;
 
 public class ContactPerson {
     private String Contact_Email;

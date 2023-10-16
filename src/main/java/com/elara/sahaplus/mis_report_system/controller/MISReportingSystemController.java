@@ -1,8 +1,8 @@
-package com.elara.sahaplus.MISReportSystem.controller;
+package com.elara.sahaplus.mis_report_system.controller;
 
-import com.elara.sahaplus.MISReportSystem.dto.request.CustomerSizeReportRequest;
-import com.elara.sahaplus.MISReportSystem.dto.response.MfbsResponse;
-import com.elara.sahaplus.MISReportSystem.service.MISReportingSystemService;
+import com.elara.sahaplus.mis_report_system.dto.request.CustomerSizeReportRequest;
+import com.elara.sahaplus.mis_report_system.dto.response.MfbsResponse;
+import com.elara.sahaplus.mis_report_system.service.MISReportingSystemService;
 import com.elara.sahaplus.customer.dto.response.CustomerSizeReportResponse;
 import com.elara.sahaplus.util.BaseResponse;
 import io.swagger.v3.oas.annotations.Operation;

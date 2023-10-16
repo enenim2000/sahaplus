@@ -1,7 +1,14 @@
-package com.elara.sahaplus.MISReportSystem.dto.backbone;
+package com.elara.sahaplus.mis_report_system.dto.backbone;
+
+import lombok.*;
 
 import javax.validation.constraints.NotNull;
 
+@Getter
+@Setter
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class CustomerSizeReportRequestDto {
     @NotNull
     private String identityCode;

@@ -1,4 +1,4 @@
-package com.elara.sahaplus.MISReportSystem;
+package com.elara.sahaplus.mis_report_system;
 
 import lombok.*;
 

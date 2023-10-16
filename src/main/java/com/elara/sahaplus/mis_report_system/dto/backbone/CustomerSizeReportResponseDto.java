@@ -1,4 +1,4 @@
-package com.elara.sahaplus.MISReportSystem.dto.backbone;
+package com.elara.sahaplus.mis_report_system.dto.backbone;
 
 import lombok.*;
 

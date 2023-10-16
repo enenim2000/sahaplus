@@ -1,8 +1,8 @@
-package com.elara.sahaplus.MISReportSystem.service;
+package com.elara.sahaplus.mis_report_system.service;
 
-import com.elara.sahaplus.MISReportSystem.dto.backbone.*;
-import com.elara.sahaplus.MISReportSystem.dto.request.CustomerSizeReportRequest;
-import com.elara.sahaplus.MISReportSystem.dto.response.MfbsResponse;
+import com.elara.sahaplus.mis_report_system.dto.backbone.*;
+import com.elara.sahaplus.mis_report_system.dto.request.CustomerSizeReportRequest;
+import com.elara.sahaplus.mis_report_system.dto.response.MfbsResponse;
 import com.elara.sahaplus.customer.dto.response.CustomerSizeReportResponse;
 import com.elara.sahaplus.util.HttpClient;
 import lombok.extern.slf4j.Slf4j;
