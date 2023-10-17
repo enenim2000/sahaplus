@@ -2,20 +2,16 @@ package com.elara.sahaplus.account.dto.backbone;
 
 import com.elara.sahaplus.enums.AccountInformationSource;
 import com.elara.sahaplus.enums.Gender;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
 @Data
-public class CreateCustomerAndAccountRequestDto {
-
+public class CreateCustomerAndAccountT3RequestDto {
   private String Email;
   private String authtoken;
   private String TransactionTrackingRef;
-
-  @JsonProperty("Gender")
   private Gender Gender;
 
-  private String DateOfBirth; //DateTime
+  private String DateOfBirth;
   private String BVN;
   private String CustomerID;
   private String AccountOpeningTrackingRef;
@@ -32,10 +28,7 @@ public class CreateCustomerAndAccountRequestDto {
   private String ReferralPhoneNo;
   private String ReferralName;
   private boolean HasSufficientInfoOnAccountInfo;
-
-  @JsonProperty("AccountInformationSource")
   private AccountInformationSource AccountInformationSource;
-
   private String OtherAccountInformationSource;
   private String AccountOfficerCode;
   private String BranchCode;
@@ -44,5 +37,4 @@ public class CreateCustomerAndAccountRequestDto {
   private String CustomerImage;
   private String CustomerSignature;
   private String version;
-
 }

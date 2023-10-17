@@ -1,7 +1,9 @@
 package com.elara.sahaplus.account.controller;
 
 import com.elara.sahaplus.account.dto.request.CreateCustomerAndAccountRequest;
+import com.elara.sahaplus.account.dto.request.CreateCustomerAndAccountT3Request;
 import com.elara.sahaplus.account.dto.response.CreateCustomerAndAccountResponse;
+import com.elara.sahaplus.account.dto.response.CreateCustomerAndAccountT3Response;
 import com.elara.sahaplus.account.service.AccountService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -34,6 +36,16 @@ public class AccountController {
   @PostMapping("/CreateCustomerAndAccount")
   public CreateCustomerAndAccountResponse createCustomerAndAccount(@Valid @RequestBody CreateCustomerAndAccountRequest request) {
     return accountService.createCustomerAndAccount(request);
+  }
+
+  @Operation(summary = "Create Customer And Account as Tier 3")
+  @ApiResponses(value = {
+      @ApiResponse(responseCode = "200", description = "Create Customer And Account as Tier 3",
+          content = {@Content(mediaType = "application/json",
+              schema = @Schema(implementation = CreateCustomerAndAccountT3Response.class))})})
+  @PostMapping("/CreateCustomerAndAccountT3")
+  public CreateCustomerAndAccountT3Response CreateCustomerAndAccountT3(@Valid @RequestBody CreateCustomerAndAccountT3Request request) {
+    return accountService.createCustomerAndAccountT3(request);
   }
 }
 
