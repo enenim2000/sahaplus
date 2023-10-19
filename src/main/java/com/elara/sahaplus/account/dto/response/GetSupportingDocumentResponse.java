@@ -10,14 +10,14 @@ import lombok.ToString;
 
 @Getter
 @Setter
-@ToString
 @Builder
+@ToString
 @AllArgsConstructor
-public class CreateCustomerAndAccountT3Response extends BaseResponse {
+public class GetSupportingDocumentResponse extends BaseResponse {
 
   private Data data;
 
-  public CreateCustomerAndAccountT3Response() {
+  public GetSupportingDocumentResponse() {
     super();
   }
 
@@ -27,7 +27,8 @@ public class CreateCustomerAndAccountT3Response extends BaseResponse {
   @NoArgsConstructor
   @AllArgsConstructor
   public static class Data {
-    private String transactionTrackingRef;
-    private String customerIDInString;
+    private String accountNumber;
+    private String customerImage;
+    private String customerSignature;
   }
 }
