@@ -1,12 +1,13 @@
 package com.elara.sahaplus.loan_application.dto.response;
 
+import com.elara.sahaplus.util.BaseResponse;
 import lombok.*;
 
 @Getter
 @Setter
 @Builder
 @AllArgsConstructor
-public class LoanCreationApplicationResponse2 {
+public class LoanCreationApplicationResponse2 extends BaseResponse {
     private Data data;
 
     public LoanCreationApplicationResponse2() {

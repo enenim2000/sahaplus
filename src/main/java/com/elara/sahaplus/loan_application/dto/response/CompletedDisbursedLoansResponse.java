@@ -1,6 +1,6 @@
 package com.elara.sahaplus.loan_application.dto.response;
 
-import com.elara.sahaplus.loan_application.LoanCreationResponseData;
+import com.elara.sahaplus.loan_application.CompletedDisbursedLoansResponseData;
 import com.elara.sahaplus.util.BaseResponse;
 import lombok.*;
 
@@ -8,10 +8,10 @@ import lombok.*;
 @Setter
 @Builder
 @AllArgsConstructor
-public class LoanCreationApplicationResponse extends BaseResponse {
+public class CompletedDisbursedLoansResponse extends BaseResponse {
     private Data data;
 
-    public LoanCreationApplicationResponse() {
+    public CompletedDisbursedLoansResponse() {
         super();
     }
 
@@ -22,8 +22,6 @@ public class LoanCreationApplicationResponse extends BaseResponse {
     @AllArgsConstructor
     public static class Data {
         private boolean isSuccessful;
-        private String customerIDInString;
-        private String transactionTrackingRef;
-        private LoanCreationResponseData loanCreationResponseData;
+        private CompletedDisbursedLoansResponseData completedDisbursedLoansResponseData;
     }
 }
