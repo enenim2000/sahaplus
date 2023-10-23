@@ -5,22 +5,22 @@ import com.elara.sahaplus.enums.Gender;
 import lombok.Data;
 
 @Data
-public class CreateCustomerAccountRequestDto {
+public class CreateAccountAndLogForApprovalRequestDto {
 
   private String authtoken;
   private String TransactionTrackingRef;
-  private Gender Gender;
-  private String Email;
+  private String CustomerID;
+  private String ProductCode;
+  private String AccountOfficerCode;
 
   //optional
-  private String CustomerID;
   private String AccountOpeningTrackingRef;
-  private String ProductCode;
   private String LastName;
   private String OtherNames;
   private String BVN;
   private String FullName;
   private String PhoneNo;
+  private Gender Gender;
   private String PlaceOfBirth;
   private String DateOfBirth;
   private String Address;
@@ -32,11 +32,10 @@ public class CreateCustomerAccountRequestDto {
   private boolean HasSufficientInfoOnAccountInfo;
   private AccountInformationSource AccountInformationSource;
   private String OtherAccountInformationSource;
-  private String AccountOfficerCode;
   private String BranchCode;
-  private String cbnCode;
+  private String CBNCode;
   private String AccountNumber;
+  private String Email;
   private String CustomerImage;
   private String CustomerSignature;
-  private String version;
 }
