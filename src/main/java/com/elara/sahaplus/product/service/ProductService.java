@@ -31,7 +31,7 @@ public class ProductService {
         BeanUtils.copyProperties(requestDto, request);
         log.info("GET_PRODUCT_REQUEST: {}", requestDto);
 
-        var apiResponse = httpClient.callApi(requestDto, GetProductResponseDto.class, HttpMethod.POST,
+        var apiResponse = httpClient.callApi(requestDto, GetProductResponseDto.class, HttpMethod.GET,
                 "/Product/Get");
 
         var response = new GetProductResponse();
