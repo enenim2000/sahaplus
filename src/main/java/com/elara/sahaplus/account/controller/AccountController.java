@@ -1,6 +1,7 @@
 package com.elara.sahaplus.account.controller;
 
 import com.elara.sahaplus.account.dto.request.ChangeAccountLevelRequest;
+import com.elara.sahaplus.account.dto.request.CloseAccountRequest;
 import com.elara.sahaplus.account.dto.request.CreateCustomerAndAccountRequest;
 import com.elara.sahaplus.account.dto.request.CreateCustomerAndAccountT3Request;
 import com.elara.sahaplus.account.dto.request.GetSupportingDocumentRequest;
@@ -8,6 +9,7 @@ import com.elara.sahaplus.account.dto.request.UpdateAccountTier2Request;
 import com.elara.sahaplus.account.dto.request.UpdateAccountTierRequest;
 import com.elara.sahaplus.account.dto.request.UploadSupportingDocumentRequest;
 import com.elara.sahaplus.account.dto.response.ChangeAccountLevelResponse;
+import com.elara.sahaplus.account.dto.response.CloseAccountResponse;
 import com.elara.sahaplus.account.dto.response.CreateCustomerAndAccountResponse;
 import com.elara.sahaplus.account.dto.response.CreateCustomerAndAccountT3Response;
 import com.elara.sahaplus.account.dto.response.GetSupportingDocumentResponse;
@@ -21,6 +23,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import java.lang.reflect.InvocationTargetException;
 import javax.validation.Valid;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -106,6 +109,21 @@ public class AccountController {
   @PostMapping("/GetSupportingDocument")
   public GetSupportingDocumentResponse getSupportingDocument(@Valid @RequestBody GetSupportingDocumentRequest request) {
     return accountService.getSupportingDocument(request);
+
+  }
+
+  @Operation(summary = "Close Account")
+  @ApiResponses(value = {
+          @ApiResponse(responseCode = "200", description = "Close Account",
+                  content = {@Content(mediaType = "application/json",
+                          schema = @Schema(implementation = CreateCustomerAndAccountResponse.class))})})
+  @PostMapping("/closeAccount")
+  public CloseAccountResponse closeAccount(
+          @Valid
+          @RequestBody CloseAccountRequest request)
+          throws InvocationTargetException, IllegalAccessException
+  {
+    return accountService.closeAccount(request);
   }
 }
 

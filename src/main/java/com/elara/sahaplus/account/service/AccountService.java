@@ -1,6 +1,8 @@
 package com.elara.sahaplus.account.service;
 
 import com.elara.sahaplus.account.dto.backbone.ChangeAccountLevelResponseDto;
+import com.elara.sahaplus.account.dto.backbone.CloseAccountRequestDto;
+import com.elara.sahaplus.account.dto.backbone.CloseAccountResponseDto;
 import com.elara.sahaplus.account.dto.backbone.CreateCustomerAndAccountRequestDto;
 import com.elara.sahaplus.account.dto.backbone.CreateCustomerAndAccountResponseDto;
 import com.elara.sahaplus.account.dto.backbone.CreateCustomerAndAccountT3RequestDto;
@@ -14,6 +16,7 @@ import com.elara.sahaplus.account.dto.backbone.UpdateAccountTierResponseDto;
 import com.elara.sahaplus.account.dto.backbone.UploadSupportingDocumentRequestDto;
 import com.elara.sahaplus.account.dto.backbone.UploadSupportingDocumentResponseDto;
 import com.elara.sahaplus.account.dto.request.ChangeAccountLevelRequest;
+import com.elara.sahaplus.account.dto.request.CloseAccountRequest;
 import com.elara.sahaplus.account.dto.request.CreateCustomerAndAccountRequest;
 import com.elara.sahaplus.account.dto.request.CreateCustomerAndAccountT3Request;
 import com.elara.sahaplus.account.dto.request.GetSupportingDocumentRequest;
@@ -21,6 +24,7 @@ import com.elara.sahaplus.account.dto.request.UpdateAccountTier2Request;
 import com.elara.sahaplus.account.dto.request.UpdateAccountTierRequest;
 import com.elara.sahaplus.account.dto.request.UploadSupportingDocumentRequest;
 import com.elara.sahaplus.account.dto.response.ChangeAccountLevelResponse;
+import com.elara.sahaplus.account.dto.response.CloseAccountResponse;
 import com.elara.sahaplus.account.dto.response.CreateCustomerAndAccountResponse;
 import com.elara.sahaplus.account.dto.response.CreateCustomerAndAccountT3Response;
 import com.elara.sahaplus.account.dto.response.GetSupportingDocumentResponse;
@@ -28,6 +32,7 @@ import com.elara.sahaplus.account.dto.response.UpdateAccountTier2Response;
 import com.elara.sahaplus.account.dto.response.UpdateAccountTierResponse;
 import com.elara.sahaplus.account.dto.response.UploadSupportingDocumentResponse;
 import com.elara.sahaplus.util.HttpClient;
+import java.lang.reflect.InvocationTargetException;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.beanutils.BeanUtils;
@@ -159,4 +164,23 @@ public class AccountService {
 
     return response;
   }
+
+  public CloseAccountResponse closeAccount (
+          CloseAccountRequest request
+  )
+          throws InvocationTargetException, IllegalAccessException
+  {
+      var requestDto = new CloseAccountRequestDto();
+      BeanUtils.copyProperties(requestDto, request);
+      log.info("CLOSE_ACCOUNT_REQUEST: {}", requestDto);
+
+      var apiResponse = httpClient.callApi(request, CloseAccountResponseDto.class, HttpMethod.POST,
+              "/Account/CloseAccount");
+
+      var response = new CloseAccountResponse();
+      BeanUtils.copyProperties(response.getData(), apiResponse);
+      log.info("CLOSE_ACCOUNT_RESPONSE: {}", response);
+
+      return response;
+    }
 }
