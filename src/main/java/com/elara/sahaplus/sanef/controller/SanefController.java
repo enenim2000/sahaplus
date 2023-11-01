@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@Tag(name = "Sanef Module", description = "Sanef Module")
+@Tag(name = "Sanef Agency Banking Module", description = "Sanef Agency Banking Module")
 @RequestMapping("/sanef/api/v1/agencybanking")
 public class SanefController {
 

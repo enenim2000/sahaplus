@@ -1,4 +1,4 @@
-package com.elara.sahaplus.account.dto.response;
+package com.elara.sahaplus.customer_and_account_creation.dto.response;
 
 import com.elara.sahaplus.util.BaseResponse;
 import lombok.AllArgsConstructor;
@@ -11,11 +11,11 @@ import lombok.ToString;
 @Setter
 @ToString
 @AllArgsConstructor
-public class DoNameEnquiryResponse extends BaseResponse {
+public class CreateCustomerAccountResponse extends BaseResponse {
 
   private Data data;
 
-  public DoNameEnquiryResponse() {
+  public CreateCustomerAccountResponse() {
     super();
   }
 
@@ -26,8 +26,9 @@ public class DoNameEnquiryResponse extends BaseResponse {
   @NoArgsConstructor
   public static class Data {
 
+    private String customerID;
     private String accountNumber;
-    private String bvn;
-    private String name;
+    private String fullName;
   }
 }
+
