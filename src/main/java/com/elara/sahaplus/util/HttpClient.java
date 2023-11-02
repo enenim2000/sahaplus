@@ -18,7 +18,7 @@ import org.springframework.web.client.RestTemplate;
 @Component
 public class HttpClient {
 
-  @Value("{backbone.baseurl}")
+  @Value("${backbone.baseurl}")
   private String baseUrl;
 
   private final Gson gson;
