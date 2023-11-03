@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.elara</groupId>
-	<artifactId>sahaplus</artifactId>
+	<artifactId>bankone</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>sahaplus</name>
-	<description>Sahaplus Middleware</description>
+	<name>BankOne Middleware</name>
+	<description>BankOne Middleware</description>
 	<properties>
 		<java.version>17</java.version>
 		<maven.compiler.source>17</maven.compiler.source>
