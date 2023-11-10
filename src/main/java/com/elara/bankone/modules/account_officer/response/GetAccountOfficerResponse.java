@@ -1,6 +1,6 @@
 package com.elara.bankone.modules.account_officer.response;
 
-import com.elara.sahaplus.util.BaseResponse;
+import com.elara.bankone.util.BaseResponse;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
